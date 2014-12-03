@@ -11,13 +11,12 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+//  background(0);
   for (int i = 0; i<ct; i++) {
   clarence[i].display();
   clarence[i].move();
   clarence[i].bounce();
   }
-  fill(0);
 //  text(y, 200, 100);
 } 
 
@@ -29,7 +28,7 @@ class Ball {
   float h;
 
   Ball() {
-    y= new PVector(random(width),0); 
+    y= new PVector(random(r,width),random(height/2)); 
     yc= new PVector(0,random(0.5));
     ya=new PVector(0, random(0.1,0.5));
     r= 10;
