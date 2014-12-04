@@ -11,7 +11,7 @@ void setup() {
 }
 
 void draw() {
-//  background(0);
+  background(0);
   for (int i = 0; i<ct; i++) {
   clarence[i].display();
   clarence[i].move();
@@ -26,6 +26,7 @@ class Ball {
   PVector ya;
   float r;
   float h;
+  float s;
 
   Ball() {
     y= new PVector(random(r,width),random(height/2)); 
@@ -33,11 +34,12 @@ class Ball {
     ya=new PVector(0, random(0.1,0.5));
     r= 10;
     h = random(360);
+    s = random(10,40);
   }
 
   void display() {
     fill(h,99,99);
-    ellipse(y.x, y.y, r, r);
+    ellipse(y.x, y.y, s, s);
   }
 
   void move() {
