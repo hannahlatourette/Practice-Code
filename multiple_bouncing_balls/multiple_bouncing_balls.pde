@@ -4,7 +4,7 @@ Ball[] clarence = new Ball[ct];
 
 void setup() {
   size(800, 600);
-  colorMode(HSB,360,100,100);
+  colorMode(HSB,360,100,100,100);
   for(int i = 0; i<ct; i++) {
   clarence[i] = new Ball();
   }
@@ -12,6 +12,7 @@ void setup() {
 
 void draw() {
   background(0);
+  noStroke();
   for (int i = 0; i<ct; i++) {
   clarence[i].display();
   clarence[i].move();
@@ -27,18 +28,20 @@ class Ball {
   float r;
   float h;
   float s;
+  float t;
 
   Ball() {
     y= new PVector(random(r,width),random(height/2)); 
-    yc= new PVector(0,random(0.5));
+    yc= new PVector(random(1,5),random(0.5));
     ya=new PVector(0, random(0.1,0.5));
     r= 10;
     h = random(360);
-    s = random(10,40);
+    s = random(40,60);
+    t = 30;
   }
 
   void display() {
-    fill(h,99,99);
+    fill(h,99,99,t);
     ellipse(y.x, y.y, s, s);
   }
 
@@ -52,6 +55,9 @@ class Ball {
       y.y=height-25;
       yc.mult(-1);
     }
+    if(y.x<s || y.x>width-s) {
+     yc.x*=-1; 
+    } 
   }
 
 }
