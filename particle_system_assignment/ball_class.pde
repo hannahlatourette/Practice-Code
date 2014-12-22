@@ -17,7 +17,7 @@ class Ball {
 
   void move() {
     if (mousePressed) {                                  //if the mouse is held, gravity (and x acceleration) go away
-      a = new PVector(0, 0);
+      a.set(0, 0);
       d += 0.1;
     }
     if (keyPressed && keyCode == DOWN) {                //if the down button is pressed, increase downward velocity
@@ -30,9 +30,9 @@ class Ball {
       if (mousePressed) {                               //let the size of the ball increase
         d += 0.1;
       } else {                                          //if there is no acceleration the mouse is not held,
-        if (d<0.01) {                                   //let the ball shrink
-          x.y = 500;
-        }                                               //if the ball becomes very small (0.01), then make it go to the floor level (and go away)
+//        if (d<0.01) {                                   //let the ball shrink
+//          x.y = lv-(d/2);
+//        }                                               //if the ball becomes very small (0.01), then make it go to the floor level (and go away)
         d -= 0.1;
       }
     }
