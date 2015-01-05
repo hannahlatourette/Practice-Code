@@ -66,16 +66,14 @@ void draw() {
  println(fr);
  
  if(h==0 && fr>360) { text = down; }
- if(h==0 && t>100) { text = space; }
- if(h==30 && fr>800) { text = mouse; println("mouseistrue"); }
+ if(h==0 && t>120) { text = space; }
+ if(h==30 && t>30) { text = mouse; }
  
- if(mousePressed) { mouse = " "; }
- if(keyPressed && key==' ') { fr = 0; }
+ if(mousePressed) { mouse = " "; println(mouse);}
+ if(keyPressed && key==' ') { space = " "; println(space); }
  if(keyPressed && keyCode==DOWN) { down = " "; }
 
 }
-
-
 
 void keyPressed() {                               //when the spacebar is pressed, change color
   if (key == ' ' ) {                              //and reset transparency and floor level
