@@ -1,10 +1,17 @@
 ArrayList<Ball> balls = new ArrayList<Ball>();
+
 int h = 0;                                       //hue
 int hc = 30;                                     //change in hue
+
+String text = " ";
+String space = "Try pressing the spacebar!";
+String down = "Hold the down arrow to speed it up a bit!";
+String mouse = "Feeling down? Try holding the left mouse button!";
 
 float lv = 590;                                  //floor level
 float t = 0.0;                                   //transparency
 float tc = 0.15;                                 //change in transparency
+float fr = 0;
 
 boolean textspace = false;                       //spacebar control guide
 boolean textdown = false;                        //down arrow guide
@@ -18,13 +25,14 @@ void setup() {
 
 void draw() {
   background(100, 0, 100);
+  fr++;
 
   //drawing "floor" rectangle
   fill(h, 100, 100, t);
   noStroke();
   rect(-1, lv + 5, width+1, height);
 
-  //drawing the balls
+  //drawing balls
   balls.add(new Ball());
   for (int i = 0; i<balls.size (); i++) {
     Ball b = balls.get(i);
@@ -40,8 +48,6 @@ void draw() {
     }
   }
 
-
-
   if (h > 360) {                                  //if the color reaches one end of the rainbow
     hc = -30;                                     //make it go in the other direction to the opposite end
   }
@@ -54,25 +60,21 @@ void draw() {
     lv = 590;                                      //and reset floor level
   }
   
- //guides
- if (t>100) {                                      //if the transparency is greater than 100
-    textspace = true;                              //guide user to press the spacebar to change color
-  }
+ //text guides
+ fill(0);
+ text(text,width,15);
+ println(fr);
+ 
+ if(h==0 && fr>360) { text = down; }
+ if(h==0 && t>100) { text = space; }
+ if(h==30 && fr>800) { text = mouse; println("mouseistrue"); }
+ 
+ if(mousePressed) { mouse = " "; }
+ if(keyPressed && key==' ') { fr = 0; }
+ if(keyPressed && keyCode==DOWN) { down = " "; }
 
- if(textspace) {
-    fill(0);                                      //guide user to press the spacebar to change color
-    text("Try pressing the spacebar!", width, 15);
- }
- if(textdown) {
-    fill(0);
-    text("Impatient? Try pressing the down arrow!", width, 15); 
- }
- if(textmouse) {
-    fill(0);
-    text("Feeling down? Try holding the left mouse button!", width, 15);
- } 
- } 
 }
+
 
 
 void keyPressed() {                               //when the spacebar is pressed, change color
