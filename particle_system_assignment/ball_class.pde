@@ -29,12 +29,7 @@ class Ball {
     if (a.x == 0 && a.y == 0) {                         //if the mouse is pressed & the ball has no acceleration,
       if (mousePressed) {                               //let the size of the ball increase
         d += 0.1;
-      } else {                                          //if there is no acceleration the mouse is not held,
-//        if (d<0.01) {                                   //let the ball shrink
-//          x.y = lv-(d/2);
-//        }                                               //if the ball becomes very small (0.01), then make it go to the floor level (and go away)
-        d -= 0.1;
-      }
+      } else { d -= 0.1; }                              //if there is no acceleration & the mouse is not held, let the ball shrink
     }
   }
 }

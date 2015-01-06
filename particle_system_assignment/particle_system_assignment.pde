@@ -65,13 +65,13 @@ void draw() {
  text(text,width,15);
  println(fr);
  
- if(h==0 && fr>360) { text = down; }
- if(h==0 && t>120) { text = space; }
- if(h==30 && t>30) { text = mouse; }
+ if(h==0 && fr>360) { text = down; }               //if during red (the first color)more than 6 seconds pass, display test hinting at the down arrow control
+ if(h==0 && t>120) { text = space; }               //if the transparency of the red is more than filled and the player has not switched colors, display text suggesting that they do
+ if(h==30 && t>30) { text = mouse; }               //if a bit of time has gone by during orange (the second color), display text suggesting that the player hold down the mouse
  
- if(mousePressed) { mouse = " "; println(mouse);}
- if(keyPressed && key==' ') { space = " "; println(space); }
- if(keyPressed && keyCode==DOWN) { down = " "; }
+ if(mousePressed) { mouse = " "; println(mouse);}              //if the player holds the mouse at any point, do not show mouse control hint ever
+ if(keyPressed && key==' ') { space = " "; }                   //if the player presses space, do not show space control hint ever
+ if(keyPressed && keyCode==DOWN) { down = " "; }               //if the player presses the down arrow, do not show down control hint ever
 
 }
 
